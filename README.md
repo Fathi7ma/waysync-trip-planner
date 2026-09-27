@@ -1,6 +1,6 @@
 # Waysync - Trip & Route Planning App
 
-React Native + Expo app built for the Codenzic Innovations technical assignment. The app follows the provided Figma design and implements all 4 screens with navigation, form validation, and mock route data.
+React Native + Expo mobile app for seamless trip planning and route calculation, featuring interactive location selection, travel mode switching, and a route preview map.
 
 ## Screens
 
