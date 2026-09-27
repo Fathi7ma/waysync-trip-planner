@@ -59,6 +59,10 @@ export default function RouteViewScreen({ navigation, route }) {
    * Start GPS Turn-by-Turn Navigation
    */
   const handleStartNavigation = () => {
+    if (isNavigating) {
+      setIsNavigating(false);
+      return;
+    }
     setIsNavigating(true);
     Alert.alert(
       'Navigation Started 🚗',

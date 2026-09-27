@@ -30,8 +30,8 @@ import { Colors, Radius, Spacing } from '../theme/colors';
  */
 export default function LoginScreen({ navigation }) {
   // Form input states
-  const [email, setEmail] = useState('you@example.com');
-  const [password, setPassword] = useState('password123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isSignUp, setIsSignUp] = useState(false);
 
   // Error validation states

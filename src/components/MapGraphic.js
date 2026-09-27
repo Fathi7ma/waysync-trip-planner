@@ -72,7 +72,7 @@ export default function MapGraphic({
       Animated.loop(
         Animated.timing(navProgress, {
           toValue: 1,
-          duration: 10000,
+          duration: 25000,
           useNativeDriver: false,
         })
       ).start();
