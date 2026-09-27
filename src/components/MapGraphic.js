@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
   TouchableOpacity,
   Animated,
-  Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors, Radius, Spacing } from '../theme/colors';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
+
 
 /**
  * MapGraphic Component
@@ -36,11 +34,10 @@ export default function MapGraphic({
   onToggleLayer,
 }) {
   const [zoomLevel, setZoomLevel] = useState(1);
-  const [currentLayer, setCurrentLayer] = useState(activeLayer);
 
-  // Animated value for car motion along route (0 to 1)
-  const navProgress = useRef(new Animated.Value(0)).current;
-  const pulseAnim = useRef(new Animated.Value(1)).current;
+  // Animated values (created once, stable across renders)
+  const navProgress = useMemo(() => new Animated.Value(0), []);
+  const pulseAnim = useMemo(() => new Animated.Value(1), []);
 
   // Pulse effect for traffic alert
   useEffect(() => {
@@ -58,12 +55,7 @@ export default function MapGraphic({
         }),
       ])
     ).start();
-  }, []);
-
-  // Sync layer prop
-  useEffect(() => {
-    setCurrentLayer(activeLayer);
-  }, [activeLayer]);
+  }, [pulseAnim]);
 
   // Handle GPS navigation animation
   useEffect(() => {
@@ -80,18 +72,18 @@ export default function MapGraphic({
       navProgress.stopAnimation();
       navProgress.setValue(0);
     }
-  }, [isNavigating]);
+  }, [isNavigating, navProgress]);
 
   // Car animation coordinates (interpolating X and Y along the route segments)
-  const carLeft = navProgress.interpolate({
+  const carLeft = useMemo(() => navProgress.interpolate({
     inputRange: [0, 0.45, 0.75, 1],
     outputRange: [42, 195, 198, 275],
-  });
+  }), [navProgress]);
 
-  const carTop = navProgress.interpolate({
+  const carTop = useMemo(() => navProgress.interpolate({
     inputRange: [0, 0.45, 0.75, 1],
     outputRange: [122, 135, 65, 55],
-  });
+  }), [navProgress]);
 
   const handleZoomIn = () => {
     setZoomLevel((prev) => Math.min(prev + 0.15, 1.4));
@@ -101,7 +93,7 @@ export default function MapGraphic({
     setZoomLevel((prev) => Math.max(prev - 0.15, 0.85));
   };
 
-  const isSatellite = currentLayer === 'satellite';
+  const isSatellite = activeLayer === 'satellite';
 
   return (
     <View style={styles.mapContainer}>
