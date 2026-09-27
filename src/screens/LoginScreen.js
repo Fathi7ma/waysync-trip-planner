@@ -16,17 +16,9 @@ import PrimaryButton from '../components/PrimaryButton';
 import { Colors, Radius, Spacing } from '../theme/colors';
 
 /**
- * LoginScreen
- * 
- * Screen 1 of the assignment:
- * - Matches the Figma design: logo, welcome text, email/password fields
- * - Basic form validation (checks valid email format and password length)
- * - Toggles between Login and Create Account mode
- * - Navigates to SetLocationsScreen upon successful login
- * 
- * STUDY NOTES FOR INTERVIEW:
- * - `useState` is used for managing user input (email, password) and validation error messages.
- * - `navigation.navigate('SetLocations')` passes the user to the next screen in the stack.
+ * LoginScreen — Screen 1
+ * Matches the Figma design with email/password fields and form validation.
+ * Toggles between Login and Create Account mode.
  */
 export default function LoginScreen({ navigation }) {
   // Form input states

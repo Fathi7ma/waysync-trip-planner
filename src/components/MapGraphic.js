@@ -14,18 +14,8 @@ import { Colors, Radius, Spacing } from '../theme/colors';
 /**
  * MapGraphic Component
  *
- * 100% Crash-Proof Interactive Map matching Figma Screen 4:
- * - Pure React Native implementation (0 native build dependencies, runs safely on Expo Go, Android APK, iOS, Web).
- * - High-fidelity cartographic layout matching the Doha / West Bay to Lusail Marina coastline.
- * - Interactive Zoom controls (+ / -).
- * - Interactive Layer toggle (Map / Satellite).
- * - Route polyline with white casing and orange primary path.
- * - Start Pin (Orange circle with car icon) & End Pin (Dark circle with inner dot).
- * - Live Turn-by-Turn GPS Navigation Animation when user taps "Start navigation".
- *
- * STUDY NOTES FOR INTERVIEW:
- * - Uses React Native's built-in `Animated` API for smooth 60fps car motion.
- * - Eliminates third-party native map crashes in Expo Go while delivering an interactive experience.
+ * Pure React Native map with route polyline, pins, zoom controls,
+ * layer toggle, traffic alert chip, and GPS navigation animation.
  */
 export default function MapGraphic({
   trafficAlert = 'Heavy traffic near the marina',

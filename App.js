@@ -15,15 +15,8 @@ const Stack = createNativeStackNavigator();
 /**
  * Root Application Component
  * 
- * Sets up:
- * 1. SafeAreaProvider for edge-to-edge layout handling on iOS and Android devices
- * 2. NavigationContainer & Native Stack Navigator with seamless screen transitions
- * 3. Waysync 4-screen flow:
- *    - Login -> SetLocations -> TripReady -> RouteView
- * 
- * STUDY NOTES FOR INTERVIEW:
- * - `createNativeStackNavigator` provides native platform transitions (iOS push/pop, Android material fade).
- * - `headerShown: false` is used because each screen renders custom Figma headers with precise brand spacing.
+ * Sets up SafeAreaProvider, NavigationContainer, and Native Stack Navigator
+ * for the 4-screen flow: Login -> SetLocations -> TripReady -> RouteView
  */
 export default function App() {
   return (

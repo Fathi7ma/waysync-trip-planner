@@ -14,16 +14,9 @@ import { DEFAULT_TRIP_DETAILS } from '../data/mockData';
 import { Colors, Radius, Spacing } from '../theme/colors';
 
 /**
- * TripReadyScreen
- * 
- * Screen 3 of the assignment:
- * - Displays selected trip information (starting point & destination)
- * - Summarizes estimated travel time, distance, and transport modes
- * - Provides clear action to proceed to the route view map
- * 
- * STUDY NOTES FOR INTERVIEW:
- * - `route.params` receives `pickup` and `dropoff` passed from `SetLocationsScreen`.
- * - Clean presentation gives user confidence before launching the navigation route.
+ * TripReadyScreen — Screen 3
+ * Displays selected trip info, travel mode selector, and stats.
+ * Provides action to proceed to route view.
  */
 export default function TripReadyScreen({ navigation, route }) {
   // Extract selected locations from navigation params (with defaults)

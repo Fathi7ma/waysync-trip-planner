@@ -127,26 +127,4 @@ waysync-trip-planner/
         └── colors.js        # Figma color tokens and spacing constants
 ```
 
----
 
-## 🎓 Interview Study Guide (Concepts You Can Explain Confidently)
-
-If asked about your code during the interview, here is how each part works in simple terms:
-
-1. **How does navigation work between screens?**
-   - The app uses `createNativeStackNavigator` from `@react-navigation/native-stack`.
-   - In `App.js`, each screen is registered (`Login`, `SetLocations`, `TripReady`, `RouteView`).
-   - Any screen receives the `{ navigation }` prop automatically. Calling `navigation.navigate('TripReady', { pickup, dropoff })` moves forward and passes the selected locations. Calling `navigation.goBack()` returns to the previous screen.
-
-2. **How is state managed?**
-   - Uses React's standard `useState` hook for local UI states (e.g., `pickup`, `dropoff`, `email`, `password`, `activeMode`).
-   - Data between screens is passed cleanly via `route.params`. This avoids overcomplicating the project with Redux or external stores while keeping the code beginner-friendly and maintainable.
-
-3. **How does form validation work?**
-   - In `LoginScreen.js`, the `validateForm()` helper checks:
-     - If the email is empty or doesn't match standard email format (`@` and `.`).
-     - If the password is shorter than 6 characters.
-   - If invalid, error messages are set in state and displayed below the input in red text.
-
-4. **Why is the architecture component-driven?**
-   - Repetitive elements like the orange button (`PrimaryButton`) and text inputs (`InputField`) are isolated in `src/components/`. If a style or behavior needs to change, it is edited once and updates everywhere.

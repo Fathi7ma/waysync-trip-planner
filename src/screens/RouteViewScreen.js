@@ -15,19 +15,9 @@ import { DEFAULT_TRIP_DETAILS } from '../data/mockData';
 import { Colors, Radius, Spacing } from '../theme/colors';
 
 /**
- * RouteViewScreen
- * 
- * Screen 4 of the assignment:
- * - Route visual on map with pins and polyline
- * - Estimated travel time (24 min) and arrival details
- * - Mode selector pills (Drive, Ride, Walk)
- * - Origin / Destination points box
- * - Turn-by-turn directions list with distance markers
- * - Primary "Start navigation" action button
- * 
- * STUDY NOTES FOR INTERVIEW:
- * - `navigation.goBack()` allows the user to return to previous steps.
- * - `isNavigating` state simulates real-time GPS navigation when user starts navigation.
+ * RouteViewScreen — Screen 4
+ * Map view with route, travel time, mode pills, origin/destination,
+ * turn-by-turn directions, and start navigation action.
  */
 export default function RouteViewScreen({ navigation, route }) {
   const pickup = route.params?.pickup || 'Home - Villa 12, Street 840';

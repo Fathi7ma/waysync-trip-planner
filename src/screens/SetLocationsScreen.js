@@ -16,20 +16,9 @@ import { SUGGESTED_LOCATIONS } from '../data/mockData';
 import { Colors, Radius, Spacing } from '../theme/colors';
 
 /**
- * SetLocationsScreen
- * 
- * Screen 2 of the assignment:
- * - Select starting location (pickup) and destination (drop-off)
- * - "Use current location" button fills current location
- * - "Pick on map" option
- * - Interactive swap button to reverse pickup & drop-off
- * - Suggested / recent locations list matching Figma
- * - "Next" button enabled only when both points are selected
- * 
- * STUDY NOTES FOR INTERVIEW:
- * - `pickup` and `dropoff` states store the selected location strings.
- * - `activeField` tracks whether the user is choosing the pickup or destination.
- * - When both fields are filled, `isTripComplete` becomes true, enabling the orange Next button.
+ * SetLocationsScreen — Screen 2
+ * Select starting location and destination with swap, current location,
+ * and suggested locations list. Next button enables when both are filled.
  */
 export default function SetLocationsScreen({ navigation }) {
   // Location selection states
