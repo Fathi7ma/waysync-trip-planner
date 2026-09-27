@@ -38,6 +38,13 @@ export default function RouteViewScreen({ navigation, route }) {
     route.params?.selectedMode || 'Drive'
   );
   const [isNavigating, setIsNavigating] = useState(false);
+  const [activeLayer, setActiveLayer] = useState('voyager');
+
+  const handleToggleLayer = () => {
+    setActiveLayer((prev) =>
+      prev === 'voyager' ? 'satellite' : prev === 'satellite' ? 'streets' : 'voyager'
+    );
+  };
 
   // Dynamic travel times based on selected mode
   const modeData = {
@@ -77,7 +84,12 @@ export default function RouteViewScreen({ navigation, route }) {
     <SafeAreaView style={styles.safeArea} edges={['top']}>
       {/* Top Map Area with Floating Controls */}
       <View style={styles.mapWrapper}>
-        <MapGraphic trafficAlert={DEFAULT_TRIP_DETAILS.trafficAlert} />
+        <MapGraphic
+          trafficAlert={DEFAULT_TRIP_DETAILS.trafficAlert}
+          activeLayer={activeLayer}
+          onToggleLayer={setActiveLayer}
+          isNavigating={isNavigating}
+        />
 
         {/* Floating Back Button (Top Left) */}
         <TouchableOpacity
@@ -91,9 +103,7 @@ export default function RouteViewScreen({ navigation, route }) {
         {/* Floating Layers Button (Top Right) */}
         <TouchableOpacity
           style={styles.floatingLayersButton}
-          onPress={() =>
-            Alert.alert('Map Layers', 'Satellite and Terrain views available.')
-          }
+          onPress={handleToggleLayer}
         >
           <Ionicons name="layers-outline" size={20} color={Colors.textDark} />
         </TouchableOpacity>
@@ -108,21 +118,15 @@ export default function RouteViewScreen({ navigation, route }) {
           {/* Top Pill Handle */}
           <View style={styles.dragHandle} />
 
-          {/* Time & Distance Header */}
-          <View style={styles.timeRow}>
-            <View>
+          {/* Time & Distance Header matching Figma */}
+          <View style={styles.timeSection}>
+            <Text style={styles.fastestRouteLabel}>Fastest route</Text>
+            <View style={styles.timeRow}>
               <Text style={styles.timeText}>{currentStats.time}</Text>
               <Text style={styles.distanceText}>
                 {currentStats.distance} · {currentStats.arrival}
               </Text>
             </View>
-
-            {isNavigating && (
-              <View style={styles.liveNavBadge}>
-                <View style={styles.livePulse} />
-                <Text style={styles.liveNavText}>NAVIGATING</Text>
-              </View>
-            )}
           </View>
 
           {/* Mode Switcher Pills */}
@@ -278,11 +282,20 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: Spacing.sm,
   },
+  timeSection: {
+    marginBottom: Spacing.sm,
+  },
+  fastestRouteLabel: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: Colors.textMuted,
+    marginBottom: 2,
+  },
   timeRow: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'baseline',
     justifyContent: 'space-between',
-    marginBottom: Spacing.md,
+    marginBottom: Spacing.xs,
   },
   timeText: {
     fontSize: 28,
@@ -290,6 +303,7 @@ const styles = StyleSheet.create({
     color: Colors.textDark,
     letterSpacing: -0.5,
   },
+
   distanceText: {
     fontSize: 13,
     color: Colors.textMuted,

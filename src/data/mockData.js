@@ -8,29 +8,29 @@ export const SUGGESTED_LOCATIONS = [
   {
     id: '1',
     title: 'Home',
-    subtitle: 'Villa 12, Street 840, Zone 27, West Bay',
+    subtitle: 'Villa 12, Street 840, Zone 27 - West Bay',
     icon: 'home-outline',
     type: 'saved',
   },
   {
     id: '2',
     title: 'Marina Office Tower',
-    subtitle: 'Level 14, Al Fardan Rd, Lusail Marina',
+    subtitle: 'Level 14, Al Fardan Rd - Lusail Marina',
     icon: 'business-outline',
     type: 'saved',
   },
   {
     id: '3',
     title: 'Corniche Ferry Terminal',
-    subtitle: 'Gate 3, Corniche Promenade',
+    subtitle: 'Gate 2, Corniche Promenade',
     icon: 'time-outline',
     type: 'recent',
   },
   {
     id: '4',
-    title: 'Mushaireb Metro Station',
-    subtitle: 'Al Khail St, Msheireb Downtown',
-    icon: 'time-outline',
+    title: 'Msheireb Metro Station',
+    subtitle: 'Al Khaleej St - Msheireb Downtown',
+    icon: 'train-outline',
     type: 'recent',
   },
   {
@@ -60,7 +60,7 @@ export const DEFAULT_TRIP_DETAILS = {
     {
       id: 't2',
       instruction: 'Turn right onto Al Istiqlal St',
-      detail: 'Moderate traffic on the road ahead',
+      detail: 'Moderate traffic on this road segment',
       distance: '1.8 km',
       icon: 'arrow-forward',
     },
@@ -80,3 +80,4 @@ export const DEFAULT_TRIP_DETAILS = {
     },
   ],
 };
+

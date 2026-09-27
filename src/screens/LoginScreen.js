@@ -114,8 +114,9 @@ export default function LoginScreen({ navigation }) {
             <Text style={styles.subtitle}>
               {isSignUp
                 ? 'Sign up to start planning routes and sync trips seamlessly.'
-                : 'Log in to store routes and follow your calculation history.'}
+                : 'Log in to plan routes and follow your calculation journey.'}
             </Text>
+
           </View>
 
           {/* Input Fields */}
